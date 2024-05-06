@@ -15,7 +15,7 @@ interface FretboardProps {
 
 export const Fretboard: React.FC<FretboardProps> = ({ strings, frets, root, type }) => {
     return (
-        <>
+        <div className="fretboard__wrapper">
             <div className="fretboard">
                 {(Object.keys(strings) as (keyof InstrumentalString)[]).map((key) => (
                     <FretSegment
@@ -27,6 +27,6 @@ export const Fretboard: React.FC<FretboardProps> = ({ strings, frets, root, type
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 };

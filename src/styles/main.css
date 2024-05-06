@@ -9,6 +9,16 @@
     border: 2px solid silver;
 }
 
+.fretboard__wrapper {
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
+.fretboard__wrapper::-webkit-scrollbar,
+.fretboard__wrapper::-webkit-scrollbar-button {
+    display: none;
+}
+
 .frets {
     display: flex;
     flex-wrap: nowrap;

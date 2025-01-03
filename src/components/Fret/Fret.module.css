@@ -1,0 +1,36 @@
+.Fret {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-left: 1px solid silver;
+    position: relative;
+    width: var(--fret-width);
+    gap: 0.25rem;
+}
+
+.Fret:first-child {
+    background-color: beige;
+}
+
+.Accent::before,
+.DoubleAccent::before,
+.DoubleAccent::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.DoubleAccent::after {
+    top: 60%;
+}
+
+.DoubleAccent::before {
+    top: 40%;
+}

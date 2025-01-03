@@ -1,0 +1,29 @@
+.Note {
+    font-weight: 300;
+    background: var(--font-color);
+    border-radius: 0.25em;
+    color: var(--dark-color);
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    z-index: 1;
+    line-height: 16px;
+    box-sizing: border-box;
+}
+
+.Note_inverse {
+    color: var(--font-color);
+    background: var(--dark-color);
+}
+
+.Note_isRoot {
+    border-radius: 50%;
+    font-weight: 500;
+}
+
+.Note_isBlank {
+    opacity: 0;
+    visibility: hidden;
+}

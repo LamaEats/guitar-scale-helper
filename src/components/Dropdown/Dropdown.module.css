@@ -1,0 +1,79 @@
+.Dropdown {
+    position: relative;
+    width: 200px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+.Control {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    flex: 1;
+    justify-content: flex-start;
+
+    background-color: white;
+    border-radius: 3px;
+
+    padding: 0.2rem 0.5rem;
+    box-sizing: border-box;
+}
+
+.isOpen .Control {
+    border-radius: 3px 3px 0 0;
+}
+
+.Panel {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+
+    max-height: 150px;
+    background: white;
+    border-radius: 0 0 3px 3px;
+    overflow: auto;
+    z-index: 10;
+    box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.8);
+}
+
+.ItemText {
+    box-sizing: border-box;
+    font-weight: 300;
+    width: 100%;
+    padding: 0.2rem 0.5rem;
+    color: inherit;
+    background: transparent;
+    transition:
+        color,
+        background 0.3s ease;
+}
+
+.ItemText:hover:not(.Active) {
+    background: var(--hover-color);
+    color: var(--font-color);
+}
+
+.ItemText.Active {
+    background: var(--accent-color);
+    width: 100%;
+    color: white;
+}
+
+.Label {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+    box-sizing: border-box;
+    padding-left: 0.5rem;
+    background: var(--accent-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.Label.Active {
+    opacity: 1;
+}

@@ -1,0 +1,23 @@
+.Fretboard {
+    max-width: 100%;
+    overflow-x: scroll;
+    margin: 0 -2rem;
+    padding: 0 2rem;
+}
+
+.Fretboard::-webkit-scrollbar,
+.Fretboard::-webkit-scrollbar-button {
+    display: none;
+}
+
+.FretboardInner {
+    display: flex;
+
+    width: max-content;
+    border: 1px solid silver;
+    height: 120px;
+}
+
+.FretboardWrapper {
+    margin: 2rem auto 0;
+}

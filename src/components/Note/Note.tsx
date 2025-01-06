@@ -6,22 +6,24 @@ import styles from './Note.module.css'
 interface NoteProps {
     note: NoteLetter
     isRoot?: boolean
-    inverse?: boolean
+    inverse?: boolean;
+    highlight?: boolean;
 }
 
 interface NoteComponent extends React.FC<NoteProps> {
     Blank: React.FC
 }
 
-const Note: NoteComponent = ({ note, isRoot, inverse }) => {
+const Note: NoteComponent = ({ note, isRoot, inverse, highlight }) => {
     return (
         <span
             className={cn(styles.Note, {
                 [styles.Note_isRoot]: isRoot,
                 [styles.Note_inverse]: inverse,
+                [styles.Note_highlight]: highlight,
             })}
         >
-            {note}
+            <code>{note}</code>
         </span>
     )
 }

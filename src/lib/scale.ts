@@ -9,11 +9,6 @@ export class ScaleNote extends Tone {
     }
 }
 
-interface IScale {
-    circle: NotesCircle<ScaleNote>
-    scale: ScaleNote[]
-}
-
 export const scaleType = {
     major: [2, 2, 1, 2, 2, 2],
     lydian: [2, 2, 2, 1, 2, 2],
@@ -25,14 +20,21 @@ export const scaleType = {
     minorPentatonic: [3, 2, 2, 3],
 }
 
+interface IScale {
+    circle: NotesCircle<ScaleNote>
+    scale: ScaleNote[];
+    includes(tone: Tone): boolean;
+    isRootNote(tone: Tone): boolean;
+}
+
 export class Scale implements IScale {
     circle: NotesCircle<ScaleNote>
-    steps: Array<number>
+    private steps: Array<number>;
     private calculatedScale: ScaleNote[] | void = void 0
 
-    constructor(root: NoteLetter, interval: Array<number>) {
+    constructor(root: NoteLetter, type: keyof typeof scaleType) {
         this.circle = new NotesCircle(new ScaleNote(root, true))
-        this.steps = interval
+        this.steps = scaleType[type];
     }
 
     get scale() {
@@ -63,5 +65,30 @@ export class Scale implements IScale {
 
     isRootNote(tone: Tone) {
         return this.circle.root.note === tone.note
+    }
+
+    interval(tone: Tone, circle: NotesCircle<Tone>): number {
+        const currentToneIndex = circle.findIndex(tone);
+        const stopToneIndex = circle.findIndex(tone.next);
+
+        return stopToneIndex - currentToneIndex;
+    };
+
+    next(tone: Tone): Tone | null {
+        if (!this.includes(tone)) return null;
+
+        let from = this.scale.findIndex((t) => t.note === tone.note);
+
+        if (from === this.scale.length - 1) {
+            from = -1;
+        }
+
+        return this.scale[from + 1];
+    }
+
+    toneFromScale (tone: Tone): Tone | null {
+        if (!this.includes(tone)) return null;
+
+        return this.scale.find((t) => t.note === tone.note) as Tone;
     }
 }

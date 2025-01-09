@@ -74,7 +74,7 @@ export class NotesCircle<T extends Tone> implements Circle<T> {
             }
 
             // @ts-ignore
-            ;(cursor.next as Tone) = new this.toneCtor(nextNote)
+            (cursor.next as Tone) = new this.toneCtor(nextNote)
             cursor = cursor.next as T
             step += 1
         }
@@ -93,6 +93,19 @@ export class NotesCircle<T extends Tone> implements Circle<T> {
             source = this.root.next as T
         }
         return null
+    }
+
+    public findIndex(note: Tone): number {
+        let source = this.root
+        let i = -1
+
+        while (true) {
+            if (source.note === note.note) {
+                return i
+            }
+            source = source.next as T
+            i += 1
+        }
     }
 
     public map<R>(iteratee: (tone: Tone, i: number) => R, count: number): R[] {
@@ -114,7 +127,7 @@ export class NotesCircle<T extends Tone> implements Circle<T> {
         let current: Tone = this.root
 
         while (i++ < n) {
-            current = current.next!
+            current = current.next
         }
 
         return current

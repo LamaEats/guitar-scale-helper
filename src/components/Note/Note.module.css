@@ -11,6 +11,7 @@
     z-index: 1;
     line-height: 16px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .Note_inverse {
@@ -26,4 +27,9 @@
 .Note_isBlank {
     opacity: 0;
     visibility: hidden;
+}
+
+.Note_highlight {
+    background: var(--accent-color);
+    color: var(--font-color);
 }
